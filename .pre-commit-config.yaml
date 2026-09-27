@@ -1,0 +1,20 @@
+# Runs automatically on `git commit`. Run on everything with: pre-commit run --all-files
+# The baseline notebook is the untouched "before" picture, so hooks skip it.
+exclude: ^notebooks/
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: end-of-file-fixer
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.16.9
+    hooks:
+      - id: ruff-check
+        args: [--fix]
+
+  - repo: https://github.com/psf/black
+    rev: 26.5.1
+    hooks:
+      - id: black
